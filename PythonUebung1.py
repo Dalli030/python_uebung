@@ -2,11 +2,11 @@
 # -*- coding: iso-8859-1 -*-
 
 linesymbol   = '-'                  # Zeichen für die Menu Linie
-width        = 30                   # Wie breit das Menu wird
 greetingtext = 'Moin moin'          # Begrüßungstext
 askname      = 'Wie heißt du? '     # Frage nach Name
 
 err_tittolong = "Der Titel darf nicht länger als Titelline sein (",width,") sein" 
+width         = len(greetingtext)*2 # Wie breit das Menu wird
 
 line = linesymbol * width 
 if len(greetingtext)>width:
