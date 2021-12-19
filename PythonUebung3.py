@@ -78,7 +78,7 @@ if int(bddaysstr) < 0:
 
 
 bd_yold = bd_yold.replace('@1',str(yearsold))
-bd_yold = bd_yold.replace('@2',str(datetime.date(year,month,day)))
+bd_yold = bd_yold.replace('@2',str(datetime.date(year,month,day).strftime('%d.%m.%Y')))
 print(bd_yold)
 bd_indays = bd_indays.replace('@1',str(bddaysstr))
 print(bd_indays)
