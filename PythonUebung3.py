@@ -13,8 +13,8 @@ qday         = 'Welchen Tag? '
 bd_past      = 'Dein Geburtstag ist dieses Jahr schon vorbei.'
 bd_today     = 'Dein Geburtstag ist heute.'
 bd_future    = 'Dein Geburtstag kommt dieses Jahr noch.'
-bd_indays    = 'Dein Geburtstag ist in xx Tagen.'
-bd_yold      = 'Du bist also XX Jahre alt und wurdest am XXX gebohren'
+bd_indays    = 'Dein Geburtstag ist in @ Tagen.'
+bd_yold      = 'Du bist also XX Jahre alt und wurdest am @ gebohren'
 
 def drawtitle(greetingtext, linesymbol = "-"): # just drawing the title
     line = linesymbol * width
@@ -23,14 +23,34 @@ def drawtitle(greetingtext, linesymbol = "-"): # just drawing the title
     print(line)
 
 def calc_bd(year,month,day):
-    print('')
+    print(qyear)
 
 
 drawtitle(greetingtext,'-')
 print(question)
-year = 1988
-month = 1
-day = 12
+is_num = True
+
+while is_num:
+    try:
+        year = int(input(qyear))
+        is_num = False
+    except ValueError:
+        is_num = True
+is_num = True
+while is_num:
+    try:
+        month = int(input(qmonth))
+        is_num = False
+    except ValueError:
+        is_num = True
+is_num = True
+while is_num:
+    try:
+        day = int(input(qday))
+        is_num = False
+    except ValueError:
+        is_num = True
+
 today = datetime.date.today()
 birthday = datetime.date(year, month, day)
 difdays = today-birthday
