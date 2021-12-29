@@ -21,8 +21,12 @@ def writetodo(todos):
         pickle.dump(todos, fp)
 
 def readtodo(todos):       # no error correction
-    with open ('todo.dat', 'rb') as fp:
-        todos = pickle.load(fp)
+    try:
+        with open ('todo.dat', 'rb') as fp:
+            todos = pickle.load(fp)
+    except:
+        todos = ['Aufräumen', 'Ein Buch Lesen', 'Sport machen']
+        print('Error : Keine Einträge gefunden. Beispieltasks geladen.')
     return todos
 
 def addtodo(todos):
@@ -54,7 +58,7 @@ def drawtitle(greetingtext, linesymbol = "-"): # just drawing the title
 
 todos = readtodo(todos)
 counttodo = len(todos)
-loadtxt = loadtxt.replace('@1',str(counttodo))
+entrytxt = entrytxt.replace('@1',str(counttodo))
 drawtitle(greetingtext,'-')
 print(loadtxt)
 print(entrytxt)
