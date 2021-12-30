@@ -40,15 +40,22 @@ def showtodo(todos):    # Output should be "- Task"
 
 def deltodo(todos):
     i = 0
-    for line in todos:
-        i += 1
-        print(i,' ',line)
-    deltask = int(input('Welche TODO soll gelöscht werden? '))
-    if deltask < 1 or deltask > i:
-        print('Ungültige Eingabe!')
-        return todos
-    todos.pop(deltask-1)
-    return todos
+    for line in enumerate(todos):
+        print(line[0],' ',line[1])
+    while True:
+        deltask = input('Welche TODO soll gelöscht werden? ')
+        try:
+            deltask = int(deltask)
+            if deltask < 0 or deltask > line[0]:
+                print('Ungültige Eingabe!')
+                return todos
+            todos.pop(deltask-1)
+            return todos
+        except ValueError:
+            print('Ungültige Eingabe!')
+            continue
+
+   
 
 def drawtitle(greetingtext, linesymbol = "-"): # just drawing the title
     line = linesymbol * width
